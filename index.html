@@ -3,181 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Divya | Propose Day</title>
+    <title>Teddy Day for Divya 🧸</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --propose-gold: #ffb703;
-            --heart-red: #d00000;
-            --soft-pink: #ffe5ec;
+            --teddy-brown: #bc6c25;
+            --teddy-cream: #fefae0;
+            --soft-brown: #dda15e;
+            --heart-red: #e63946;
         }
 
         body {
-            background-color: var(--soft-pink);
-            font-family: 'Poppins', sans-serif;
+            background-color: var(--teddy-cream);
+            font-family: 'Comfortaa', cursive; /* Softer, rounded font */
             overflow-x: hidden;
+            color: #606c38;
         }
 
-        /* Propose Day Hero */
-        .propose-hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80');
+        /* Teddy Day Hero */
+        .teddy-hero {
+            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url('https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .hero-title {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(3rem, 10vw, 6rem);
-            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+            font-size: clamp(3.5rem, 8vw, 5.5rem);
+            color: var(--teddy-brown);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 30px;
+            border-radius: 50px;
         }
 
-        /* Tracker Styling */
-        .day-badge {
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            background: #fff;
-            color: #ccc;
-            margin: 3px;
+        /* Teddy Animation */
+        .teddy-container {
+            font-size: 100px;
+            cursor: pointer;
+            transition: transform 0.3s;
             display: inline-block;
-            border: 1px solid #eee;
         }
-        .completed { color: #2a9d8f; border-color: #2a9d8f; }
-        .active-day { background: var(--heart-red); color: white; transform: scale(1.1); font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-
-        /* Proposal Card */
-        .proposal-card {
-            background: white;
-            border-radius: 30px;
-            padding: 40px;
-            margin-top: -100px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 100;
+        .teddy-container:hover {
+            transform: scale(1.2) rotate(5deg);
         }
 
-        /* Floating Hearts Animation */
-        .heart {
+        /* Floating Bears */
+        .floating-bear {
             position: fixed;
             top: -10%;
             z-index: 999;
-            animation: floatHeart linear infinite;
+            animation: fall linear infinite;
+            opacity: 0.6;
         }
-        @keyframes floatHeart {
-            to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
         }
 
-        /* Interactive Buttons */
-        .btn-yes { background: var(--heart-red); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-size: 1.2rem; transition: 0.3s; }
-        .btn-yes:hover { transform: scale(1.2); box-shadow: 0 0 20px rgba(208, 0, 0, 0.4); }
-        #noBtn { transition: 0.2s; position: relative; }
+        /* Memory Book Styling */
+        .memory-book {
+            background: white;
+            border-radius: 30px;
+            border: 2px dashed var(--soft-brown);
+            padding: 30px;
+        }
 
-        .memory-chip {
+        .day-badge {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            background: #fff;
+            color: #ccc;
+            margin: 5px;
             display: inline-block;
-            background: #f1f1f1;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+        .completed { color: var(--teddy-brown); border-color: var(--teddy-brown); background: #fdf0d5; }
+        .active-day { background: var(--teddy-brown); color: white !important; font-weight: bold; scale: 1.1; }
+
+        .divya-img {
+            border-radius: 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
 
-    <section class="propose-hero">
-        <div class="container">
-            <h1 class="hero-title">Hey Divya...</h1>
-            <p class="fs-3">I have a question for you.</p>
-        </div>
-    </section>
+    <header class="teddy-hero">
+        <h1 class="hero-title">Happy Teddy Day, Divya!</h1>
+    </header>
 
-    <div class="container text-center py-4">
-        <div class="day-badge completed">Feb 7: Rose Day ✓</div>
-        <div class="day-badge active-day">Feb 8: Propose Day 💍</div>
-        <div class="day-badge">Feb 9: Chocolate Day</div>
-        <div class="day-badge">Feb 10: Teddy Day</div>
-        <div class="day-badge">Feb 11: Promise Day</div>
-        <div class="day-badge">Feb 12: Hug Day</div>
-        <div class="day-badge">Feb 13: Kiss Day</div>
-        <div class="day-badge">Feb 14: Valentine's ❤️</div>
+    <div class="container text-center mt-4">
+        <div class="day-badge completed">Rose ✓</div>
+        <div class="day-badge completed">Propose ✓</div>
+        <div class="day-badge completed">Chocolate ✓</div>
+        <div class="day-badge active-day">Teddy Day 🧸</div>
+        <div class="day-badge">Promise</div>
+        <div class="day-badge">Hug</div>
+        <div class="day-badge">Kiss</div>
+        <div class="day-badge">Valentine ❤️</div>
     </div>
 
-    <div class="container mb-5">
+    <div class="container my-5 text-center">
+        <div class="teddy-container" onclick="teddyHug()">
+            🧸
+            <p style="font-size: 1.2rem; margin-top: 10px;">(Click the bear for a hug!)</p>
+        </div>
+        
         <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="proposal-card text-center">
-                    <span class="memory-chip">Feb 8, 2026</span>
-                    <h2 class="mb-4" style="font-family: 'Dancing Script'; color: var(--heart-red); font-size: 3rem;">Will you be my Valentine forever?</h2>
-                    <p class="text-muted px-md-5">I don't need a thousand reasons to love you. I just need you. From Rose Day to every day, I want to be the one holding your hand.</p>
-                    
-                    <div class="mt-4">
-                        <button class="btn-yes m-2" onclick="accepted()">YES! ❤️</button>
-                        <button id="noBtn" class="btn btn-outline-secondary rounded-pill m-2" onmouseover="moveNo()">No</button>
-                    </div>
+            <div class="col-md-8">
+                <div class="memory-book shadow-sm">
+                    <h2 class="mb-4" style="font-family: 'Dancing Script'; color: var(--teddy-brown);">A Big Bear Hug For You</h2>
+                    <p class="lead italic">"In a world where you can be anything, be my teddy bear—soft, warm, and always there for me."</p>
+                    <p>Divya, I wish I could give you a giant teddy bear today, but until then, let this website be your digital cuddle. You're the cutest person I know!</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container my-5">
-        <h3 class="text-center mb-4" style="font-family: 'Dancing Script';">Our Beautiful Journey</h3>
-        <div class="row g-4">
-            <div class="col-md-4"><img src="photo1.jpg" class="img-fluid rounded shadow" alt="Divya"></div>
-            <div class="col-md-4"><img src="photo2.jpg" class="img-fluid rounded shadow" style="margin-top: 20px;" alt="Divya"></div>
-            <div class="col-md-4"><img src="photo3.jpg" class="img-fluid rounded shadow" alt="Divya"></div>
+    <div class="container mb-5">
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <img src="photo1.jpg" class="img-fluid divya-img" alt="Divya 1">
+                <p class="mt-2"><i>Purest Smile</i></p>
+            </div>
+            <div class="col-md-4">
+                <img src="photo2.jpg" class="img-fluid divya-img" alt="Divya 2">
+                <p class="mt-2"><i>Cutest Moments</i></p>
+            </div>
+            <div class="col-md-4">
+                <img src="photo3.jpg" class="img-fluid divya-img" alt="Divya 3">
+                <p class="mt-2"><i>Always You</i></p>
+            </div>
         </div>
     </div>
 
-    <div class="container text-center py-5 mb-5" style="background: #3e2723; border-radius: 30px; color: #ffb3c1;">
-        <h4>Still as sweet as Feb 7...</h4>
-        <p>Roses were just the beginning. Today, it's about us. 🌹🍫</p>
+    <div class="container mb-5">
+        <div class="p-4 text-center" style="background: var(--soft-brown); border-radius: 20px; color: white;">
+            <h3>Still Sweetened by Chocolate & Love 🍫🧸</h3>
+            <p>From Roses to Bears, every day gets better with you.</p>
+        </div>
     </div>
 
-    <footer class="text-center pb-4 text-muted">
-        Updated with ❤️ | Feb 8, 2026
+    <footer class="text-center pb-5 text-muted">
+        Made for Divya with ❤️ | Feb 10, 2026
     </footer>
 
     <script>
-        // Floating Hearts
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.classList.add('heart');
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 5000);
+        // Floating Teddy Bears and Paws
+        function createFloatingIcon() {
+            const icons = ['🧸', '🐾', '🤎', '✨'];
+            const icon = document.createElement('div');
+            icon.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            icon.classList.add('floating-bear');
+            icon.style.left = Math.random() * 100 + 'vw';
+            icon.style.animationDuration = Math.random() * 3 + 4 + 's';
+            icon.style.fontSize = Math.random() * 20 + 15 + 'px';
+            document.body.appendChild(icon);
+            setTimeout(() => { icon.remove(); }, 6000);
         }
-        setInterval(createHeart, 400);
+        setInterval(createFloatingIcon, 600);
 
-        // Tricky "No" Button
-        function moveNo() {
-            const btn = document.getElementById('noBtn');
-            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
-            btn.style.position = 'absolute';
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
-        }
-
-        function accepted() {
-            alert("Best decision ever! I love you, Divya! ❤️💍");
-            document.querySelector('.proposal-card').innerHTML = `
-                <h1 style="font-family: 'Dancing Script'; color: var(--heart-red);">She Said YES! 💍</h1>
-                <p>I am the luckiest person in the world. ❤️</p>
-                <div class='display-1'>🎉👩‍❤️‍👨✨</div>
-            `;
+        function teddyHug() {
+            const messages = [
+                "Sending a giant hug! 🤗",
+                "You're so squishy and cute! 🥰",
+                "I'm never letting go! ❤️",
+                "Divya + Teddy = Cutest Duo! 🧸"
+            ];
+            alert(messages[Math.floor(Math.random() * messages.length)]);
+            
+            // Shower some hearts when clicked
+            for(let i=0; i<15; i++) {
+                setTimeout(createFloatingIcon, i * 100);
+            }
         }
     </script>
 </body>
 </html>
-
