@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Forever Valentine | Divya</title>
+    <title>Divya's Valentine Library</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --valentine-red: #a4161a;
@@ -18,175 +18,172 @@
             background-color: var(--valentine-red);
             color: var(--cream);
             font-family: 'Playfair Display', serif;
-            overflow-x: hidden;
+            padding-bottom: 50px;
         }
 
-        /* Hero Section */
-        .grand-finale {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
+        .header-section {
+            height: 40vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            text-align: center;
-            border-bottom: 5px solid var(--gold);
-        }
-
-        .main-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(4rem, 12vw, 7rem);
-            color: var(--gold);
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow { from { opacity: 0.8; } to { opacity: 1; text-shadow: 0 0 30px var(--gold); } }
-
-        /* Music Player Bar */
-        .music-bar {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 10px 20px;
-            border-radius: 50px;
-            z-index: 1000;
-            display: flex;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            color: var(--valentine-red);
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            border-bottom: 4px solid var(--gold);
         }
 
-        /* Love Letter Section */
-        .letter-container {
+        .title { font-family: 'Dancing Script', cursive; font-size: 4rem; color: var(--gold); }
+
+        /* Memory Grid */
+        .memory-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+            height: 100%;
+        }
+        .memory-card:hover {
+            background: var(--gold);
+            color: var(--valentine-red);
+            transform: translateY(-10px);
+        }
+        .memory-card i { font-size: 2rem; display: block; margin-bottom: 10px; }
+
+        /* Overlay Styling */
+        .memory-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: var(--cream);
             color: #333;
-            padding: 50px;
-            border-radius: 5px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            margin: -100px auto 50px;
-            max-width: 800px;
-            position: relative;
-            border: 1px solid var(--gold);
+            z-index: 2000;
+            display: none;
+            overflow-y: auto;
+            padding: 40px 20px;
+            animation: fadeIn 0.5s;
         }
 
-        .letter-text {
-            line-height: 2;
-            font-size: 1.2rem;
-            font-style: italic;
-        }
-
-        /* Photo Frames */
-        .divya-frame {
-            border: 15px solid white;
-            outline: 2px solid var(--gold);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-            transition: 0.5s;
-        }
-        .divya-frame:hover { transform: scale(1.02); }
-
-        /* Sparkle Animation */
-        .sparkle {
+        .close-btn {
             position: fixed;
-            pointer-events: none;
-            animation: fly 5s linear infinite;
-            z-index: 999;
+            top: 20px; right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--valentine-red);
+            z-index: 2001;
         }
-        @keyframes fly {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        .divya-photo {
+            width: 100%;
+            max-width: 400px;
+            border: 8px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div class="music-bar">
-        <span class="me-2">🎻 </span>
-        <audio id="bgMusic" controls loop>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
-
-    <header class="grand-finale">
-        <h1 class="main-title">To My Forever, Divya</h1>
-        <p class="fs-3">Happy Valentine's Day 2026</p>
-        <a href="#letter" class="btn btn-outline-warning btn-lg mt-4 px-5 rounded-pill">Open Your Letter</a>
+    <header class="header-section">
+        <h1 class="title">Our Love Story</h1>
+        <p>Divya, click on a day to relive the memory.</p>
     </header>
 
-    <div class="container" id="letter">
-        <div class="letter-container">
-            <div class="text-center mb-4">
-                <span style="font-size: 50px;">✉️</span>
-                <h2 style="font-family: 'Dancing Script'; color: var(--valentine-red);">Dearest Divya,</h2>
+    <div class="container mt-5">
+        <div class="row g-4">
+            <div class="col-6 col-md-3">
+                <div class="memory-card" onclick="openMemory('rose')">
+                    <span>Feb 7</span>
+                    <h3>Rose Day 🌹</h3>
+                </div>
             </div>
-            <div class="letter-text">
-                "We’ve traveled from Rose Day to this beautiful moment. Every day with you is a celebration, but today, I want to tell you that you are my home. Just like the music of a violin, you bring harmony to my life. Will you be my Valentine, not just for today, but for every tomorrow we have yet to see?"
+            <div class="col-6 col-md-3">
+                <div class="memory-card" onclick="openMemory('propose')">
+                    <span>Feb 8</span>
+                    <h3>Propose Day 💍</h3>
+                </div>
             </div>
-            <div class="text-end mt-4">
-                <h4 style="font-family: 'Dancing Script';">- Your Biggest Admirer ❤️</h4>
+            <div class="col-6 col-md-3">
+                <div class="memory-card" onclick="openMemory('chocolate')">
+                    <span>Feb 9</span>
+                    <h3>Chocolate Day 🍫</h3>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <div class="container my-5 pb-5">
-        <div class="row g-4 justify-content-center">
-            <div class="col-md-5">
-                <img src="photo1.jpg" class="img-fluid divya-frame" alt="Divya">
+            <div class="col-6 col-md-3">
+                <div class="memory-card" onclick="openMemory('teddy')">
+                    <span>Feb 10</span>
+                    <h3>Teddy Day 🧸</h3>
+                </div>
             </div>
-            <div class="col-md-5">
-                <img src="photo2.jpg" class="img-fluid divya-frame" style="margin-top: 40px;" alt="Divya">
-            </div>
-            <div class="col-md-10 mt-5">
-                <img src="photo3.jpg" class="img-fluid divya-frame" alt="Divya">
-                <div class="text-center mt-3">
-                    <p class="fs-4 italic">"The melody of us is my favorite song."</p>
+            <div class="col-12 mt-4">
+                <div class="memory-card bg-warning text-dark" onclick="openMemory('valentine')">
+                    <span>FEBRUARY 14</span>
+                    <h2>The Grand Finale ❤️</h2>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container text-center py-5">
-        <h3 class="mb-4" style="color: var(--gold);">Our Valentine's Week Journey</h3>
-        <div class="d-flex flex-wrap justify-content-center gap-3">
-            <div class="p-3 border border-warning rounded">🌹 Rose Day</div>
-            <div class="p-3 border border-warning rounded">💍 Propose Day</div>
-            <div class="p-3 border border-warning rounded">🍫 Chocolate Day</div>
-            <div class="p-3 border border-warning rounded">🧸 Teddy Day</div>
-            <div class="p-3 border border-warning rounded">📜 Promise Day</div>
-            <div class="p-3 border border-warning rounded">🫂 Hug Day</div>
-            <div class="p-3 border border-warning rounded">💋 Kiss Day</div>
-            <div class="p-3 bg-warning text-dark fw-bold rounded">❤️ Valentine's Day</div>
-        </div>
+    <div id="memoryContent" class="memory-overlay">
+        <span class="close-btn" onclick="closeMemory()">&times;</span>
+        <div id="dynamicContent" class="container text-center">
+            </div>
     </div>
 
-    <footer class="text-center py-5">
-        <p>© 2026 | Created with endless love for Divya</p>
-    </footer>
-
     <script>
-        // Sparkle Generator
-        function createSparkle() {
-            const symbols = ['✨', '❤️', '💖', '🎻', '🌹'];
-            const sparkle = document.createElement('div');
-            sparkle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-            sparkle.classList.add('sparkle');
-            sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.top = '100vh';
-            sparkle.style.fontSize = Math.random() * 20 + 10 + 'px';
-            sparkle.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 5000);
-        }
-        setInterval(createSparkle, 300);
-
-        // Auto-play hint
-        window.onload = function() {
-            console.log("Music ready. Divya, please click play on the bottom right!");
+        const memories = {
+            rose: `
+                <h1 style="font-family:'Dancing Script'; color:#d63384">Rose Day</h1>
+                <p class="lead">"Of all the roses in the garden, you are the most beautiful bloom."</p>
+                <img src="photo1.jpg" class="divya-photo mb-4">
+                <div class="alert alert-danger">Sent a thousand virtual roses to Divya! 🌹</div>
+            `,
+            propose: `
+                <h1 style="font-family:'Dancing Script'; color:#a4161a">Propose Day</h1>
+                <h2>The Big Question</h2>
+                <p>I asked, and my heart already knew the answer. You make every day better.</p>
+                <img src="photo2.jpg" class="divya-photo mb-4">
+                <div class="display-4">💍❤️✨</div>
+            `,
+            chocolate: `
+                <h1 style="font-family:'Dancing Script'; color:#3e2723">Chocolate Day</h1>
+                <p>Still the sweetest person I've ever met.</p>
+                <div class="p-4 rounded-pill bg-dark text-white mb-4">You + Me = Sweeter than Silk 🍫</div>
+                <img src="photo3.jpg" class="divya-photo">
+            `,
+            teddy: `
+                <h1 style="font-family:'Dancing Script'; color:#bc6c25">Teddy Day</h1>
+                <div style="font-size:100px">🧸</div>
+                <p>A virtual hug that never ends. You are my favorite cuddle partner.</p>
+                <button class="btn btn-warning rounded-pill" onclick="alert('Sending Hugs!')">Click for Cuddle</button>
+            `,
+            valentine: `
+                <h1 style="font-family:'Dancing Script'; color:#a4161a; font-size: 4rem;">Happy Valentine's Day</h1>
+                <div class="p-5 border border-danger">
+                    <p class="fs-4">"You are my today and all of my tomorrows."</p>
+                    <p>This week was just the beginning of a lifetime of love. Thank you for being mine, Divya.</p>
+                    <img src="photo1.jpg" class="divya-photo mb-2">
+                    <img src="photo2.jpg" class="divya-photo mb-2">
+                    <img src="photo3.jpg" class="divya-photo mb-2">
+                </div>
+            `
         };
+
+        function openMemory(day) {
+            document.getElementById('dynamicContent').innerHTML = memories[day];
+            document.getElementById('memoryContent').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Stop scrolling
+        }
+
+        function closeMemory() {
+            document.getElementById('memoryContent').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
