@@ -72,5 +72,120 @@
             border: 1px solid var(--gold);
         }
 
-        .letter-text
-        
+        .letter-text {
+            line-height: 2;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Photo Frames */
+        .divya-frame {
+            border: 15px solid white;
+            outline: 2px solid var(--gold);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            transition: 0.5s;
+        }
+        .divya-frame:hover { transform: scale(1.02); }
+
+        /* Sparkle Animation */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            animation: fly 5s linear infinite;
+            z-index: 999;
+        }
+        @keyframes fly {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-bar">
+        <span class="me-2">🎻 </span>
+        <audio id="bgMusic" controls loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <header class="grand-finale">
+        <h1 class="main-title">To My Forever, Divya</h1>
+        <p class="fs-3">Happy Valentine's Day 2026</p>
+        <a href="#letter" class="btn btn-outline-warning btn-lg mt-4 px-5 rounded-pill">Open Your Letter</a>
+    </header>
+
+    <div class="container" id="letter">
+        <div class="letter-container">
+            <div class="text-center mb-4">
+                <span style="font-size: 50px;">✉️</span>
+                <h2 style="font-family: 'Dancing Script'; color: var(--valentine-red);">Dearest Divya,</h2>
+            </div>
+            <div class="letter-text">
+                "We’ve traveled from Rose Day to this beautiful moment. Every day with you is a celebration, but today, I want to tell you that you are my home. Just like the music of a violin, you bring harmony to my life. Will you be my Valentine, not just for today, but for every tomorrow we have yet to see?"
+            </div>
+            <div class="text-end mt-4">
+                <h4 style="font-family: 'Dancing Script';">- Your Biggest Admirer ❤️</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 pb-5">
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-5">
+                <img src="photo1.jpg" class="img-fluid divya-frame" alt="Divya">
+            </div>
+            <div class="col-md-5">
+                <img src="photo2.jpg" class="img-fluid divya-frame" style="margin-top: 40px;" alt="Divya">
+            </div>
+            <div class="col-md-10 mt-5">
+                <img src="photo3.jpg" class="img-fluid divya-frame" alt="Divya">
+                <div class="text-center mt-3">
+                    <p class="fs-4 italic">"The melody of us is my favorite song."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center py-5">
+        <h3 class="mb-4" style="color: var(--gold);">Our Valentine's Week Journey</h3>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <div class="p-3 border border-warning rounded">🌹 Rose Day</div>
+            <div class="p-3 border border-warning rounded">💍 Propose Day</div>
+            <div class="p-3 border border-warning rounded">🍫 Chocolate Day</div>
+            <div class="p-3 border border-warning rounded">🧸 Teddy Day</div>
+            <div class="p-3 border border-warning rounded">📜 Promise Day</div>
+            <div class="p-3 border border-warning rounded">🫂 Hug Day</div>
+            <div class="p-3 border border-warning rounded">💋 Kiss Day</div>
+            <div class="p-3 bg-warning text-dark fw-bold rounded">❤️ Valentine's Day</div>
+        </div>
+    </div>
+
+    <footer class="text-center py-5">
+        <p>© 2026 | Created with endless love for Divya</p>
+    </footer>
+
+    <script>
+        // Sparkle Generator
+        function createSparkle() {
+            const symbols = ['✨', '❤️', '💖', '🎻', '🌹'];
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = '100vh';
+            sparkle.style.fontSize = Math.random() * 20 + 10 + 'px';
+            sparkle.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 5000);
+        }
+        setInterval(createSparkle, 300);
+
+        // Auto-play hint
+        window.onload = function() {
+            console.log("Music ready. Divya, please click play on the bottom right!");
+        };
+    </script>
+</body>
+</html>
