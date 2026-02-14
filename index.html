@@ -3,189 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teddy Day for Divya 🧸</title>
+    <title>My Forever Valentine | Divya</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --teddy-brown: #bc6c25;
-            --teddy-cream: #fefae0;
-            --soft-brown: #dda15e;
-            --heart-red: #e63946;
+            --valentine-red: #a4161a;
+            --gold: #d4af37;
+            --cream: #fff5f5;
         }
 
         body {
-            background-color: var(--teddy-cream);
-            font-family: 'Comfortaa', cursive; /* Softer, rounded font */
+            background-color: var(--valentine-red);
+            color: var(--cream);
+            font-family: 'Playfair Display', serif;
             overflow-x: hidden;
-            color: #606c38;
         }
 
-        /* Teddy Day Hero */
-        .teddy-hero {
-            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url('https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=1200&q=80');
+        /* Hero Section */
+        .grand-finale {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
-            height: 60vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            border-radius: 0 0 50px 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-bottom: 5px solid var(--gold);
         }
 
-        .hero-title {
+        .main-title {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(3.5rem, 8vw, 5.5rem);
-            color: var(--teddy-brown);
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px 30px;
-            border-radius: 50px;
+            font-size: clamp(4rem, 12vw, 7rem);
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
         }
 
-        /* Teddy Animation */
-        .teddy-container {
-            font-size: 100px;
-            cursor: pointer;
-            transition: transform 0.3s;
-            display: inline-block;
-        }
-        .teddy-container:hover {
-            transform: scale(1.2) rotate(5deg);
-        }
+        @keyframes glow { from { opacity: 0.8; } to { opacity: 1; text-shadow: 0 0 30px var(--gold); } }
 
-        /* Floating Bears */
-        .floating-bear {
+        /* Music Player Bar */
+        .music-bar {
             position: fixed;
-            top: -10%;
-            z-index: 999;
-            animation: fall linear infinite;
-            opacity: 0.6;
-        }
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(360deg); }
-        }
-
-        /* Memory Book Styling */
-        .memory-book {
-            background: white;
-            border-radius: 30px;
-            border: 2px dashed var(--soft-brown);
-            padding: 30px;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 50px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            color: var(--valentine-red);
         }
 
-        .day-badge {
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            background: #fff;
-            color: #ccc;
-            margin: 5px;
-            display: inline-block;
-            border: 1px solid #ddd;
+        /* Love Letter Section */
+        .letter-container {
+            background: var(--cream);
+            color: #333;
+            padding: 50px;
+            border-radius: 5px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            margin: -100px auto 50px;
+            max-width: 800px;
+            position: relative;
+            border: 1px solid var(--gold);
         }
-        .completed { color: var(--teddy-brown); border-color: var(--teddy-brown); background: #fdf0d5; }
-        .active-day { background: var(--teddy-brown); color: white !important; font-weight: bold; scale: 1.1; }
 
-        .divya-img {
-            border-radius: 20px;
-            border: 5px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-    </style>
-</head>
-<body>
-
-    <header class="teddy-hero">
-        <h1 class="hero-title">Happy Teddy Day, Divya!</h1>
-    </header>
-
-    <div class="container text-center mt-4">
-        <div class="day-badge completed">Rose ✓</div>
-        <div class="day-badge completed">Propose ✓</div>
-        <div class="day-badge completed">Chocolate ✓</div>
-        <div class="day-badge active-day">Teddy Day 🧸</div>
-        <div class="day-badge">Promise</div>
-        <div class="day-badge">Hug</div>
-        <div class="day-badge">Kiss</div>
-        <div class="day-badge">Valentine ❤️</div>
-    </div>
-
-    <div class="container my-5 text-center">
-        <div class="teddy-container" onclick="teddyHug()">
-            🧸
-            <p style="font-size: 1.2rem; margin-top: 10px;">(Click the bear for a hug!)</p>
-        </div>
+        .letter-text
         
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="memory-book shadow-sm">
-                    <h2 class="mb-4" style="font-family: 'Dancing Script'; color: var(--teddy-brown);">A Big Bear Hug For You</h2>
-                    <p class="lead italic">"In a world where you can be anything, be my teddy bear—soft, warm, and always there for me."</p>
-                    <p>Divya, I wish I could give you a giant teddy bear today, but until then, let this website be your digital cuddle. You're the cutest person I know!</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mb-5">
-        <div class="row g-4 text-center">
-            <div class="col-md-4">
-                <img src="photo1.jpg" class="img-fluid divya-img" alt="Divya 1">
-                <p class="mt-2"><i>Purest Smile</i></p>
-            </div>
-            <div class="col-md-4">
-                <img src="photo2.jpg" class="img-fluid divya-img" alt="Divya 2">
-                <p class="mt-2"><i>Cutest Moments</i></p>
-            </div>
-            <div class="col-md-4">
-                <img src="photo3.jpg" class="img-fluid divya-img" alt="Divya 3">
-                <p class="mt-2"><i>Always You</i></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mb-5">
-        <div class="p-4 text-center" style="background: var(--soft-brown); border-radius: 20px; color: white;">
-            <h3>Still Sweetened by Chocolate & Love 🍫🧸</h3>
-            <p>From Roses to Bears, every day gets better with you.</p>
-        </div>
-    </div>
-
-    <footer class="text-center pb-5 text-muted">
-        Made for Divya with ❤️ | Feb 10, 2026
-    </footer>
-
-    <script>
-        // Floating Teddy Bears and Paws
-        function createFloatingIcon() {
-            const icons = ['🧸', '🐾', '🤎', '✨'];
-            const icon = document.createElement('div');
-            icon.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-            icon.classList.add('floating-bear');
-            icon.style.left = Math.random() * 100 + 'vw';
-            icon.style.animationDuration = Math.random() * 3 + 4 + 's';
-            icon.style.fontSize = Math.random() * 20 + 15 + 'px';
-            document.body.appendChild(icon);
-            setTimeout(() => { icon.remove(); }, 6000);
-        }
-        setInterval(createFloatingIcon, 600);
-
-        function teddyHug() {
-            const messages = [
-                "Sending a giant hug! 🤗",
-                "You're so squishy and cute! 🥰",
-                "I'm never letting go! ❤️",
-                "Divya + Teddy = Cutest Duo! 🧸"
-            ];
-            alert(messages[Math.floor(Math.random() * messages.length)]);
-            
-            // Shower some hearts when clicked
-            for(let i=0; i<15; i++) {
-                setTimeout(createFloatingIcon, i * 100);
-            }
-        }
-    </script>
-</body>
-</html>
