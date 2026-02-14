@@ -1,190 +1,192 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divya | My Forever Valentine</title>
+    <title>My Forever Valentine | Divya</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --deep-wine: #4a0404;
-            --gold-leaf: #c5a059;
-            --silk-white: #fffcf2;
+            --valentine-red: #a4161a;
+            --gold: #d4af37;
+            --cream: #fff5f5;
         }
 
         body {
-            background-color: var(--deep-wine);
-            color: var(--silk-white);
+            background-color: var(--valentine-red);
+            color: var(--cream);
             font-family: 'Playfair Display', serif;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at center, #630505 0%, #4a0404 100%);
         }
 
-        /* Saxophone Hero */
-        .sax-hero {
+        /* Hero Section */
+        .grand-finale {
             height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            border-bottom: 2px solid var(--gold-leaf);
+            border-bottom: 5px solid var(--gold);
         }
 
         .main-title {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(3.5rem, 12vw, 7rem);
-            color: var(--gold-leaf);
-            text-shadow: 3px 3px 15px rgba(0,0,0,0.8);
+            font-size: clamp(4rem, 12vw, 7rem);
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
         }
 
-        /* Floating Music Notes */
-        .note {
+        @keyframes glow { from { opacity: 0.8; } to { opacity: 1; text-shadow: 0 0 30px var(--gold); } }
+
+        /* Music Player Bar */
+        .music-bar {
             position: fixed;
-            bottom: -10%;
-            z-index: 999;
-            animation: rise linear infinite;
-            color: var(--gold-leaf);
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        @keyframes rise {
-            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-            20% { opacity: 0.8; }
-            100% { transform: translateY(-110vh) translateX(50px) rotate(360deg); opacity: 0; }
-        }
-
-        /* Audio Player Styling */
-        .sax-player {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(197, 160, 89, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 15px 25px;
-            border-radius: 100px;
-            border: 1px solid var(--gold-leaf);
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 50px;
             z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            color: var(--valentine-red);
         }
 
-        /* The Love Letter */
-        .parchment {
-            background: #f4ece1;
-            color: #2c1810;
-            padding: 60px;
-            border-radius: 2px;
+        /* Love Letter Section */
+        .letter-container {
+            background: var(--cream);
+            color: #333;
+            padding: 50px;
+            border-radius: 5px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            margin: -100px auto 50px;
+            max-width: 800px;
             position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            max-width: 750px;
-            margin: -80px auto 60px;
-            border: 1px solid #d3c4b1;
+            border: 1px solid var(--gold);
         }
 
-        .parchment::before {
-            content: "";
-            position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px solid #d3c4b1;
+        .letter-text {
+            line-height: 2;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Photo Frames */
+        .divya-frame {
+            border: 15px solid white;
+            outline: 2px solid var(--gold);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            transition: 0.5s;
+        }
+        .divya-frame:hover { transform: scale(1.02); }
+
+        /* Sparkle Animation */
+        .sparkle {
+            position: fixed;
             pointer-events: none;
+            animation: fly 5s linear infinite;
+            z-index: 999;
         }
-
-        .divya-photo {
-            width: 100%;
-            border: 12px solid #fff;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-            filter: sepia(20%);
-            transition: 0.4s;
+        @keyframes fly {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
-        .divya-photo:hover { filter: sepia(0%); transform: scale(1.03); }
-
     </style>
 </head>
 <body>
 
-    <div id="note-container"></div>
-
-    <div class="sax-player d-flex align-items-center">
-        <span class="me-3" style="font-size: 24px;">🎷</span>
-        <audio id="romanticSax" controls loop>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+    <div class="music-bar">
+        <span class="me-2">🎻 </span>
+        <audio id="bgMusic" controls loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
     </div>
 
-    <section class="sax-hero">
-        <h1 class="main-title">Divya</h1>
-        <p class="fs-2 fw-light" style="letter-spacing: 5px; color: var(--gold-leaf);">FEBRUARY 14, 2026</p>
-        <div class="mt-4">
-            <span class="badge rounded-pill bg-dark border border-warning p-2 px-4">Our Love Symphony</span>
-        </div>
-    </section>
+    <header class="grand-finale">
+        <h1 class="main-title">To My Forever, Divya</h1>
+        <p class="fs-3">Happy Valentine's Day 2026</p>
+        <a href="#letter" class="btn btn-outline-warning btn-lg mt-4 px-5 rounded-pill">Open Your Letter</a>
+    </header>
 
-    <div class="container">
-        <div class="parchment">
-            <div class="text-center mb-5">
-                <h2 style="font-family: 'Dancing Script'; font-size: 3.5rem;">My Valentine</h2>
+    <div class="container" id="letter">
+        <div class="letter-container">
+            <div class="text-center mb-4">
+                <span style="font-size: 50px;">✉️</span>
+                <h2 style="font-family: 'Dancing Script'; color: var(--valentine-red);">Dearest Divya,</h2>
             </div>
-            <p class="lead" style="line-height: 2; font-style: italic;">
-                "Divya, some people say life is a journey, but with you, it feels like a beautiful song. The kind of melody that stays in the heart long after the music stops. This week was just a small glimpse of how much you mean to me. Thank you for being the rhythm to my soul and the beauty in my every day."
-            </p>
-            <div class="text-end mt-5">
-                <p style="font-family: 'Dancing Script'; font-size: 2rem;">Forever Yours, ❤️</p>
+            <div class="letter-text">
+                "We’ve traveled from Rose Day to this beautiful moment. Every day with you is a celebration, but today, I want to tell you that you are my home. Just like the music of a violin, you bring harmony to my life. Will you be my Valentine, not just for today, but for every tomorrow we have yet to see?"
+            </div>
+            <div class="text-end mt-4">
+                <h4 style="font-family: 'Dancing Script';">- Your Biggest Admirer ❤️</h4>
             </div>
         </div>
     </div>
 
-    <div class="container my-5">
-        <div class="row g-5 align-items-center">
-            <div class="col-md-6">
-                <img src="photo1.jpg" class="divya-photo" alt="Divya">
+    <div class="container my-5 pb-5">
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-5">
+                <img src="photo1.jpg" class="img-fluid divya-frame" alt="Divya">
             </div>
-            <div class="col-md-6">
-                <div class="ps-md-4">
-                    <h3 style="color: var(--gold-leaf); font-family: 'Dancing Script'; font-size: 3rem;">The Highlight of My Life</h3>
-                    <p>Every photo tells a story, and every story of mine starts and ends with your smile.</p>
+            <div class="col-md-5">
+                <img src="photo2.jpg" class="img-fluid divya-frame" style="margin-top: 40px;" alt="Divya">
+            </div>
+            <div class="col-md-10 mt-5">
+                <img src="photo3.jpg" class="img-fluid divya-frame" alt="Divya">
+                <div class="text-center mt-3">
+                    <p class="fs-4 italic">"The melody of us is my favorite song."</p>
                 </div>
             </div>
-            <div class="col-md-6 order-md-2">
-                <img src="photo2.jpg" class="divya-photo" alt="Divya">
-            </div>
-            <div class="col-md-6 order-md-1 text-md-end">
-                <img src="photo3.jpg" class="divya-photo" style="max-width: 80%;" alt="Divya">
-            </div>
         </div>
     </div>
 
-    <footer class="text-center py-5 mt-5" style="background: rgba(0,0,0,0.3);">
-        <p style="color: var(--gold-leaf);">Rose • Propose • Chocolate • Teddy • Promise • Hug • Kiss • <b>Valentine</b></p>
-        <p class="small text-muted">Made with ❤️ for Divya</p>
+    <div class="container text-center py-5">
+        <h3 class="mb-4" style="color: var(--gold);">Our Valentine's Week Journey</h3>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <div class="p-3 border border-warning rounded">🌹 Rose Day</div>
+            <div class="p-3 border border-warning rounded">💍 Propose Day</div>
+            <div class="p-3 border border-warning rounded">🍫 Chocolate Day</div>
+            <div class="p-3 border border-warning rounded">🧸 Teddy Day</div>
+            <div class="p-3 border border-warning rounded">📜 Promise Day</div>
+            <div class="p-3 border border-warning rounded">🫂 Hug Day</div>
+            <div class="p-3 border border-warning rounded">💋 Kiss Day</div>
+            <div class="p-3 bg-warning text-dark fw-bold rounded">❤️ Valentine's Day</div>
+        </div>
+    </div>
+
+    <footer class="text-center py-5">
+        <p>© 2026 | Created with endless love for Divya</p>
     </footer>
 
     <script>
-        // Musical Note Animation
-        function createNote() {
-            const notes = ['♫', '♪', '♩', '♬', '❤️'];
-            const note = document.createElement('div');
-            note.innerHTML = notes[Math.floor(Math.random() * notes.length)];
-            note.classList.add('note');
-            note.style.left = Math.random() * 100 + 'vw';
-            note.style.fontSize = Math.random() * 20 + 15 + 'px';
-            note.style.animationDuration = Math.random() * 4 + 4 + 's';
-            document.getElementById('note-container').appendChild(note);
-            
-            setTimeout(() => { note.remove(); }, 8000);
+        // Sparkle Generator
+        function createSparkle() {
+            const symbols = ['✨', '❤️', '💖', '🎻', '🌹'];
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = '100vh';
+            sparkle.style.fontSize = Math.random() * 20 + 10 + 'px';
+            sparkle.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 5000);
         }
-        setInterval(createNote, 400);
+        setInterval(createSparkle, 300);
 
-        // Gentle reminder to play music
-        window.onclick = function() {
-            const audio = document.getElementById('romanticSax');
-            // Some browsers allow autoplay after the first user interaction
-            console.log("Music is ready for Divya.");
+        // Auto-play hint
+        window.onload = function() {
+            console.log("Music ready. Divya, please click play on the bottom right!");
         };
     </script>
 </body>
 </html>
-
